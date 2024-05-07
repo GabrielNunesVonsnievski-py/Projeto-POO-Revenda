@@ -8,15 +8,15 @@ import "./App.css";
 function App() {
   const [user, setUser] = useState({
     nome: "",
-    email: "",
-    cargo_id: 0,
+    login: "",
+    senha: "",
   });
   function inserirUsuario() {
     axios.post("http:localhost:3000/usuarios", {
       body: {
         nome: user.nome,
-        email: user.email,
-        cargo_id: user.cargo_id,
+        login: user.login,
+        senha: user.senha,
       },
       header: {
         "Content-Type": "Application/Json",
@@ -41,25 +41,26 @@ function App() {
           placeholder="Nome"
           onChange={(e) => setUser({ ...user, nome: e.target.value })}
         />
-
+        <br></br>
         <input
           type="text"
-          id="email"
-          value={user.email}
-          placeholder="Email"
-          onChange={(e) => setUser({ ...user, email: e.target.value })}
+          id="login"
+          value={user.login}
+          placeholder="Login"
+          onChange={(e) => setUser({ ...user, login: e.target.value })}
         />
-
+        <br></br>
         <input
           type="text"
-          id="cargo_id"
-          value={user.cargo_id}
-          placeholder="ID Cargo"
+          id="senha"
+          value={user.senha}
+          placeholder="Senha"
           onChange={(e) =>
-            setUser({ ...user, cargo_id: parseInt(e.target.value) })
+            setUser({ ...user, senha: parseInt(e.target.value) })
           }
         />
-        <button style={{backgroundColor: 'cyan'}} onClick={() => inserirUsuario()}>
+        <br></br>
+        <button style={{backgroundColor: '#E1C7C1'}} onClick={() => inserirUsuario()}>
           Inserir Cliente
         </button>
       </div>
