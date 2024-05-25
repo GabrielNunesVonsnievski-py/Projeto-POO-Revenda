@@ -1,13 +1,13 @@
 from flask import request, render_template
 from database.db import db
-from models.cliente import cliente
+from models.usuario import usuario
 
-def cliente_controller():
+def usuario_controller():
         if request.method == 'POST':
             try:
                  data = request.get_json()
                  print(data)
-                 user = cliente(data['nome'], data['email'], data['cargo_id'])
+                 user = usuario(data['codigo'], data['nome'], data['login'], data['senha'])
                  db.session.add(user)
                  db.session.commit()
                  return 'Usuario criado com sucesso', 200
@@ -16,8 +16,8 @@ def cliente_controller():
             
         elif request.method == 'GET':
             try:
-                data = cliente.query.all()
-                return render_template('cliente.html',data={'cliente':[cliente.to_dict() for cliente in data]})
+                data = usuario.query.all()
+                return render_template('usuario.html',data={'usuario':[usuario.to_dict() for usuario in data]})
             
             except Exception  as e:
                  return 'Não foi possivel buscar usuários', 405
@@ -25,28 +25,28 @@ def cliente_controller():
         elif request.method == 'PUT':
              try:
                   data = request.get_json()
-                  put_cliente_id = data['id']
-                  put_cliente = cliente.query.get(put_cliente_id)
-                  if put_cliente is None:
-                       return {'error': 'Cliente não encontrado'}, 404
-                  put_cliente.nome = data.get('nome', put_cliente.nome)
-                  put_cliente.email = data.get('email', put_cliente.email)
-                  print(put_cliente.nome, put_cliente.email)
+                  put_usuario_id = data['id']
+                  put_usuario = usuario.query.get(put_usuario_id)
+                  if put_usuario is None:
+                       return {'error': 'usuario não encontrado'}, 404
+                  put_usuario.nome = data.get('nome', put_usuario.nome)
+                  put_usuario.email = data.get('email', put_usuario.email)
+                  print(put_usuario.codigo, put_usuario.nome, put_usuario.login, put_usuario.senha)
                   db.session.commit()
-                  return 'Cliente atualizado com sucesso',200
+                  return 'usuario atualizado com sucesso',200
              except Exception as e:
-                  return {'error': 'erro ao atualizar cliente. Erro{}' .format(e)}, 400
+                  return {'error': 'erro ao atualizar usuario. Erro{}' .format(e)}, 400
              
         elif request.method == 'DELETE':
              try:
                   data = request.get_json()
-                  delete_cliente_id = data['id']
-                  delete_cliente = cliente.query.get(delete_cliente_id)
-                  if delete_cliente is None:
-                       return {'error': 'Cliente não encontrado'}, 404
-                  db.session.delete(delete_cliente)
+                  delete_usuario_id = data['id']
+                  delete_usuario = usuario.query.get(delete_usuario_id)
+                  if delete_usuario is None:
+                       return {'error': 'usuario não encontrado'}, 404
+                  db.session.delete(delete_usuario)
                   db.session.commit()
-                  return 'Cliente atualizado com sucesso',200
+                  return 'usuario atualizado com sucesso',200
              except Exception as e:
-                  return {'error': 'erro ao atualizar cliente. Erro{}' .format(e)}, 400
+                  return {'error': 'erro ao atualizar usuario. Erro{}' .format(e)}, 400
      
