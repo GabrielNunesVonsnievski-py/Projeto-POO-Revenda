@@ -3,6 +3,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 
 class modelo(db.Model):
+
     def to_dict(self):
         return {
             'codigo'   :self.codigo,
@@ -11,7 +12,7 @@ class modelo(db.Model):
         }
     codigo = db.Column(db.Integer, primary_key=True)
     nome   = db.Column(db.String(50))
-    codmarca  = db.Column(db.Integer, Foreign_key=True(50))
+    codmarca  = db.Column(db.Integer,ForeignKey('marca.codigo')(50))
 
 
     def __init__(self,codigo, nome, codmarca):
