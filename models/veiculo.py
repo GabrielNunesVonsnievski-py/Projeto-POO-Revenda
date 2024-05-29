@@ -1,6 +1,7 @@
 from database.db import db
+from sqlalchemy import ForeignKey
 
-class Marca(db.Model):
+class veiculo(db.Model):
 
     def to_dict(self):
         return{
@@ -12,13 +13,13 @@ class Marca(db.Model):
             'cor'         : self.placa,
             'opcional'    : self.opcional,
             'valor'       : self.valor,
-            'foto'       : self.foto
+            'foto'        : self.foto
 
         }
     
     codigo       = db.Column(db.Integer, primary_key=True, nullable=False, unique=True)
     descricao    = db.Column(db.String(100))
-    codcategoria = db.Column(db.Integer(10))
+    codcategoria = db.Column(ForeignKey('categoria.codigo'))
     codmodelo    = db.Column(db.Integer(10))
     ano          = db.Column(db.Integer(10))
     cor          = db.Column(db.String(100))

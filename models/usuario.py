@@ -1,6 +1,6 @@
 from database.db import db
 from sqlalchemy import ForeignKey
-from sqlalchemy.orm import relationship
+
 
 class usuario(db.Model):
     def to_dict(self):

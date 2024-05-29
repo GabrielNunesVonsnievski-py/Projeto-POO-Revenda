@@ -12,7 +12,7 @@ class modelo(db.Model):
         }
     codigo = db.Column(db.Integer, primary_key=True)
     nome   = db.Column(db.String(50))
-    codmarca  = db.Column(db.Integer,ForeignKey('marca.codigo')(50))
+    codmarca  = db.Column(ForeignKey('marca.codigo'))
 
 
     def __init__(self,codigo, nome, codmarca):

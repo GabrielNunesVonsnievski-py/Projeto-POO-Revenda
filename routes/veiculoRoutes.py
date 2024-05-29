@@ -1,4 +1,4 @@
-from controllers.modeloController import modelo_controller
+from controllers.veiculoController import veiculo_controller
 
-def modelo(app):
-    app.route('/modelos', methods=['POST','GET','PUT','DELETE'])(modelo_controller)
+def veiculo(app):
+    app.route('/veiculos', methods=['POST','GET','PUT','DELETE'])(veiculo_controller)
