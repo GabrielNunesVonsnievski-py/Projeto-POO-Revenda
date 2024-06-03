@@ -1,5 +1,5 @@
 from flask import request, render_template
-from database.db import db
+from database import db
 from models.usuario import usuario
 
 def usuario_controller():

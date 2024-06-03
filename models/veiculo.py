@@ -20,12 +20,12 @@ class veiculo(db.Model):
     codigo       = db.Column(db.Integer, primary_key=True, nullable=False, unique=True)
     descricao    = db.Column(db.String(100))
     codcategoria = db.Column(ForeignKey('categoria.codigo'))
-    codmodelo    = db.Column(db.Integer(10))
-    ano          = db.Column(db.Integer(10))
+    codmodelo    = db.Column(db.Integer)
+    ano          = db.Column(db.Integer)
     cor          = db.Column(db.String(100))
-    placa        = db.Column(db.Integer(10))
+    placa        = db.Column(db.Integer)
     opcional     = db.Column(db.String(100))
-    valor        = db.Column(db.Integer(100))
+    valor        = db.Column(db.Integer)
     foto         = db.Column(db.String(100))
 
     def __init__(self, codigo, descricao, codcategoria, codmodelo, ano, cor, placa, opcional, valor, foto):

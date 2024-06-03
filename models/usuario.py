@@ -13,7 +13,7 @@ class usuario(db.Model):
     codigo = db.Column(db.Integer, primary_key=True)
     nome   = db.Column(db.String(50))
     login  = db.Column(db.String(50))
-    senha  = db.Column(db.Integer(50))
+    senha  = db.Column(db.Integer)
 
     def __init__(self,codigo, nome, login, senha):
         self.codigo = codigo
