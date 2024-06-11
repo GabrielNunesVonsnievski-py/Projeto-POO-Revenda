@@ -105,7 +105,8 @@ const Login = () => {
         <button type="submit">Login</button>
       </form>
       {message && <p>{message}</p>}
-      <form className="login-form" onSubmit={inserirUsuario}>
+      <br></br>
+      <form className="login-form" onSubmit={inserirUsuario}>    //TERMINAR
         <h2><center>CADASTRO</center></h2>
         <input
           placeholder='Codigo: '
@@ -113,6 +114,7 @@ const Login = () => {
           value={user.codigo}
           onChange={(e) => setUser({...user, codigo: e.target.value})}
         />
+      </form>
         <br />
     </div>
   );
