@@ -1,6 +1,4 @@
 from database.db import db
-from sqlalchemy import ForeignKey
-
 
 class usuario(db.Model):
     def to_dict(self):
@@ -13,10 +11,9 @@ class usuario(db.Model):
     codigo = db.Column(db.Integer, primary_key=True)
     nome   = db.Column(db.String(50))
     login  = db.Column(db.String(50))
-    senha  = db.Column(db.Integer)
+    senha  = db.Column(db.String(10))
 
-    def __init__(self,codigo, nome, login, senha):
-        self.codigo = codigo
+    def __init__(self, nome, login, senha):
         self.nome   = nome
         self.login  = login
         self.senha  = senha

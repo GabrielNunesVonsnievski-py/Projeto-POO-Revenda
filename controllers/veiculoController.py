@@ -1,5 +1,5 @@
 from flask import request, render_template
-from database import db
+from database.db import db
 from models.veiculo import veiculo
 
 def veiculo_controller():

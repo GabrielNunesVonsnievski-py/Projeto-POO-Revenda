@@ -1,5 +1,5 @@
 from flask import request, render_template
-from database import db
+from database.db import db
 from sqlalchemy import ForeignKey
 from models.categoria import categoria
 
@@ -21,7 +21,7 @@ def categoria_controller():
                 return render_template('categoria.html',data={'categoria':[categoria.to_dict() for categoria in data]})
             
             except Exception  as e:
-                 return 'Não foi possivel buscar categorias', 405
+                 return {'error': 'erro ao buscar categoria. Erro{}' .format(e)}, 400
             
         elif request.method == 'PUT':
              try:
