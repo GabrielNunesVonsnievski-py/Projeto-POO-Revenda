@@ -1,24 +1,31 @@
-import './Navbar.css'
-import React, { useState, Link} from 'react';
-import { Routes, Route, Link} from 'react-router-dom'
-import LoginForm from '../../Pages/Login';
+import React, { useState} from 'react';
+import { Link } from 'react-router-dom';
+import './Navbar.css'; 
 
-const Navbar = () => {
-
+const Navbar = ({ cartItemsCount }) => {
   const [menu, setMenu] = useState("");
-  
-    return(
-      <div className='nav'>
-        <div className='nav-logo'>The Car</div>
-        <ul className='nav-menu'>
-            <li>Home</li>
-            <li>Explore</li>
-            <li onClick={LoginForm}>Login</li>
-            <li className='nav-contact'>Kart</li>
-        </ul>
-  
+
+  return(
+    <div className='nav'>
+      <div className='nav-logo'>
+        <Link to="/" className="nav-link">The Car</Link>
       </div>
-    )
-  }
-  
-  export default Navbar
+      <ul className='nav-menu'>
+        <li onClick={()=>{setMenu('products')}}>
+          <Link to="/products" className="nav-link">Products</Link>
+          {menu==='products' ? <h/> : <></>}
+        </li>
+        <li onClick={()=>{setMenu('login')}}>
+          <Link to="/login" className="nav-link">Login</Link>
+          {menu==='login' ? <h/> : <></>}
+        </li>
+        <li onClick={()=>{setMenu('cart')}} className='nav-contact'>
+          <Link to="/cart" className="nav-link">Cart ({cartItemsCount})</Link>
+          {menu==='cart' ? <h/> : <></>}
+        </li>
+      </ul>
+    </div>
+  )
+}
+
+export default Navbar;
