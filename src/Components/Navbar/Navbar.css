@@ -1,41 +1,58 @@
-.nav{
+.nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 40px 120px;
-    color: 'white';
-}
-.nav-logo{
-    font-family: Outfit;
+    color: '#0087FF';
+  }
+  
+  .nav-logo {
+    font-family: Outfit, sans-serif;
     font-size: 42px;
     font-weight: 500;
     gap: 10px;
-}
-.nav-menu{
+  }
+  
+  .nav-menu {
     display: flex;
     align-items: center;
     list-style: none;
     font-size: 18px;
     gap: 90px;
-
-}
-.nav-contact{
+  }
+  
+  .nav-menu li {
+    position: relative;
+  }
+  
+  .nav-contact {
     border-radius: 50px;
     padding: 10px 38px;
     background: #fff;
     color: #262626;
-}
-.nav-login-cart{
-    display: flex;
-    align-items: center;
-    list-style: none;
-    font-size: 18px;
-    gap: 90px;
-}
-.nav-login-cart{
-    display: flex;
-    align-items: center;
-    list-style: none;
-    font-size: 18px;
-    gap: 90px;
-}
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: transparent;
+    transition: width 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+    left: 0;
+    background: transparent; /* Change this to match the desired hover effect */
+  }
+  

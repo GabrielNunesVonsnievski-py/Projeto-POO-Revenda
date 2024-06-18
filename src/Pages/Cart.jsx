@@ -2,15 +2,25 @@ import React from 'react';
 import './Cart.css';
 
 const Cart = ({ cartItems, setCartItems }) => {
+   //adiciona qntd de item no carrinho 
     const increaseQuantity = (index) => {
         const updatedCartItems = [...cartItems];
         updatedCartItems[index].quantity += 1;
         setCartItems(updatedCartItems);
     };
-
+    //remove o item do carrinho e os krl
     const removeItem = (index) => {
         const updatedCartItems = cartItems.filter((_, i) => i !== index);
         setCartItems(updatedCartItems);
+    };
+
+    // calcula o total dos itens no carrinho e é isso
+    const calculateTotal = () => {
+        let total = 0;
+        cartItems.forEach(item => {
+            total += parseFloat(item.price.replace('R$ ', '').replace(',', '.')) * item.quantity;
+        });
+        return total.toFixed(2);
     };
 
     return (
@@ -26,6 +36,10 @@ const Cart = ({ cartItems, setCartItems }) => {
                     </li>
                 ))}
             </ul>
+            {/* Mostra o total dos itens */}
+            <div className="total">
+                Total: R$ {calculateTotal()}
+            </div>
         </div>
     );
 }
