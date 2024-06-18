@@ -11,24 +11,24 @@ class veiculo(db.Model):
             'codmodelo'   : self.codmodelo,
             'ano'         : self.ano,
             'cor'         : self.placa,
-            'opcional'    : self.opcional,
+            'opicional'    : self.opicional,
             'valor'       : self.valor,
-            'foto'        : self.foto
+            'foto1'        : self.foto1
 
         }
     
     codigo       = db.Column(db.Integer, primary_key=True, nullable=False, unique=True)
     descricao    = db.Column(db.String(100))
     codcategoria = db.Column(ForeignKey('categoria.codigo'))
-    codmodelo    = db.Column(db.Integer)
+    codmodelo    = db.Column(ForeignKey('modelo.codigo'))
     ano          = db.Column(db.Integer)
     cor          = db.Column(db.String(100))
     placa        = db.Column(db.Integer)
-    opcional     = db.Column(db.String(100))
+    opicional     = db.Column(db.String(100))
     valor        = db.Column(db.Integer)
-    foto         = db.Column(db.String(100))
+    foto1         = db.Column(db.String(100))
 
-    def __init__(self, codigo, descricao, codcategoria, codmodelo, ano, cor, placa, opcional, valor, foto):
+    def __init__(self, codigo, descricao, codcategoria, codmodelo, ano, cor, placa, opicional, valor, foto1):
         self.codigo       = codigo
         self.descricao    = descricao
         self.codcategoria = codcategoria
@@ -36,6 +36,6 @@ class veiculo(db.Model):
         self.ano          = ano
         self.cor          = cor
         self.placa        = placa
-        self.opcional     = opcional
+        self.opicional    = opicional
         self.valor        = valor
-        self.foto         = foto
+        self.foto1        = foto1

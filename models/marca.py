@@ -1,5 +1,4 @@
 from database.db import db
-from sqlalchemy.orm import relationship
 
 class marca(db.Model):
 
